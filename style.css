@@ -1,0 +1,304 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.wrapper {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.wrapper header {
+  background-image: url("dolar.jpg");
+  background-position: center;
+  background-size: cover;
+  padding: 50px 0;
+}
+
+.wrapper header .wrapper__header {
+  width: 400px;
+  margin: 0 auto;
+  color: white;
+}
+
+@media only screen and (max-width: 750px) {
+  .wrapper header .wrapper__header {
+    width: 300px;
+  }
+}
+
+.wrapper header .wrapper__header .header__total {
+  padding: 10px 0;
+}
+
+.wrapper header .wrapper__header .header__income {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 15px 10px;
+  margin-bottom: 10px;
+  text-align: left;
+  background-color: green;
+}
+
+.wrapper header .wrapper__header .header__income .income__title {
+  -ms-flex-preferred-size: 60%;
+      flex-basis: 60%;
+  color: #e2d8d8;
+}
+
+.wrapper header .wrapper__header .header__income .income__total {
+  -ms-flex-preferred-size: 40%;
+      flex-basis: 40%;
+  color: white;
+}
+
+.wrapper header .wrapper__header .header__expenses {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 15px 10px;
+  margin-bottom: 10px;
+  text-align: left;
+  background-color: #ff3333;
+}
+
+.wrapper header .wrapper__header .header__expenses .expenses__title {
+  -ms-flex-preferred-size: 60%;
+      flex-basis: 60%;
+  color: #e2d8d8;
+}
+
+.wrapper header .wrapper__header .header__expenses .expenses__total {
+  -ms-flex-preferred-size: 32%;
+      flex-basis: 32%;
+  color: white;
+}
+
+.wrapper header .wrapper__header .header__expenses .expenses__percentage {
+  -ms-flex-preferred-size: 8%;
+      flex-basis: 8%;
+  color: white;
+  font-size: .8em;
+  background-color: salmon;
+  border: 1px solid white;
+  padding: 1px;
+  text-align: center;
+}
+
+.wrapper section {
+  background-color: #cde5ec;
+}
+
+.wrapper section .wrapper__section {
+  padding: 10px 0;
+  width: 500px;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 750px) {
+  .wrapper section .wrapper__section {
+    max-width: 100%;
+    min-width: 310px;
+    padding: 10px 2px;
+  }
+}
+
+.wrapper section .wrapper__section .section__value-type,
+.wrapper section .wrapper__section .section__description,
+.wrapper section .wrapper__section .section__value,
+.wrapper section .wrapper__section .section__save {
+  height: 30px;
+}
+
+@media only screen and (max-width: 750px) {
+  .wrapper section .wrapper__section .section__value-type {
+    width: 25%;
+    font-size: .7em;
+  }
+}
+
+.wrapper section .wrapper__section .section__description {
+  width: 50%;
+  padding-left: 10px;
+}
+
+@media only screen and (max-width: 750px) {
+  .wrapper section .wrapper__section .section__description {
+    width: 30%;
+  }
+}
+
+.wrapper section .wrapper__section .section__value {
+  width: 20%;
+  padding-left: 10px;
+}
+
+.wrapper section .wrapper__section .section__save {
+  background-color: transparent;
+  border: none;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.wrapper section .wrapper__section .section__save i {
+  vertical-align: middle;
+  color: green;
+  font-size: 2.3em;
+}
+
+.wrapper section .wrapper__section .section__save:focus {
+  outline: none;
+}
+
+.wrapper section .wrapper__section .section__save:active {
+  outline: 1px solid gray;
+}
+
+.wrapper main .wrapper__main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 800px;
+  margin: 70px auto 0;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+@media only screen and (max-width: 750px) {
+  .wrapper main .wrapper__main {
+    display: block;
+    max-width: 100%;
+    min-width: 315px;
+    padding: 0 5px;
+  }
+}
+
+.wrapper main .wrapper__main .main__income {
+  -ms-flex-preferred-size: 350px;
+      flex-basis: 350px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.wrapper main .wrapper__main .main__income .income__title {
+  text-align: left;
+  padding: 10px 0;
+  color: green;
+  border-bottom: 1px solid lightsteelblue;
+}
+
+.wrapper main .wrapper__main .main__income .income__entry {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: left;
+  padding: 10px 5px 10px 15px;
+  border-bottom: 1px solid lightsteelblue;
+  vertical-align: middle;
+}
+
+.wrapper main .wrapper__main .main__income .income__entry .entry__value-delete {
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
+.wrapper main .wrapper__main .main__income .income__entry .entry__value-delete .entry__value {
+  color: green;
+  font-weight: bold;
+  padding-right: 5px;
+}
+
+.wrapper main .wrapper__main .main__income .income__entry .entry__value-delete .entry__delete {
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.wrapper main .wrapper__main .main__income .income__entry .entry__value-delete .entry__delete i {
+  vertical-align: middle;
+  color: #ff3333;
+  font-size: 2.3em;
+}
+
+.wrapper main .wrapper__main .main__income .income__entry .entry__value-delete .entry__delete:focus {
+  outline: none;
+}
+
+.wrapper main .wrapper__main .main__income .income__entry .entry__value-delete .entry__delete:active {
+  outline: 1px solid gray;
+}
+
+.wrapper main .wrapper__main .main__expenses {
+  -ms-flex-preferred-size: 350px;
+      flex-basis: 350px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 750px) {
+  .wrapper main .wrapper__main .main__expenses {
+    margin-top: 20px;
+  }
+}
+
+.wrapper main .wrapper__main .main__expenses .expenses__title {
+  text-align: left;
+  padding: 10px 0;
+  color: #ff3333;
+  border-bottom: 1px solid lightsteelblue;
+}
+
+.wrapper main .wrapper__main .main__expenses .expenses__entry {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: left;
+  padding: 10px 5px 10px 15px;
+  border-bottom: 1px solid lightsteelblue;
+  vertical-align: middle;
+}
+
+.wrapper main .wrapper__main .main__expenses .expenses__entry .entry__value-delete {
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
+.wrapper main .wrapper__main .main__expenses .expenses__entry .entry__value-delete .entry__value {
+  color: #ff3333;
+  font-weight: bold;
+  padding-right: 5px;
+}
+
+.wrapper main .wrapper__main .main__expenses .expenses__entry .entry__value-delete .entry__delete {
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.wrapper main .wrapper__main .main__expenses .expenses__entry .entry__value-delete .entry__delete i {
+  vertical-align: middle;
+  color: #ff3333;
+  font-size: 2.3em;
+}
+
+.wrapper main .wrapper__main .main__expenses .expenses__entry .entry__value-delete .entry__delete:focus {
+  outline: none;
+}
+
+.wrapper main .wrapper__main .main__expenses .expenses__entry .entry__value-delete .entry__delete:active {
+  outline: 1px solid gray;
+}
+/*# sourceMappingURL=style.css.map */

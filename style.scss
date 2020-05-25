@@ -1,0 +1,285 @@
+
+@mixin tablet {
+    @media only screen and (max-width: 750px) {
+        @content
+    }
+}
+
+$incomeColor: green;
+$expensesColor:lighten($color: red, $amount: 10);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.wrapper {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+
+    header {
+        background-image: url('dolar.jpg');
+        background-position: center;
+        background-size: cover;
+        padding: 50px 0;
+
+        .wrapper__header {
+            width: 400px;
+            margin: 0 auto;
+            color: white;
+            @include tablet {
+                width: 300px;
+            }
+
+            .header__total {
+                padding: 10px 0;
+            }
+
+            .header__income {
+                display: flex;
+                padding: 15px 10px;
+                margin-bottom: 10px;
+                text-align: left;
+                background-color: $incomeColor;
+
+                .income__title {
+                    flex-basis: 60%;
+                    color: rgb(226, 216, 216);
+                }
+
+                .income__total {
+                    flex-basis: 40%;
+                    color: white;
+                }
+            }
+
+            .header__expenses {
+                display: flex;
+                padding: 15px 10px;
+                margin-bottom: 10px;
+                text-align: left;
+                background-color: $expensesColor;
+
+                .expenses__title {
+                    flex-basis: 60%;
+                    color: rgb(226, 216, 216);
+                }
+
+                .expenses__total {
+                    flex-basis: 32%;
+                    color: white;
+                }
+
+                .expenses__percentage {
+                    // width: 0;
+                    // visibility: hidden;
+                    flex-basis: 8%;
+                    color: white;
+                    font-size: .8em;
+                    background-color: salmon;
+                    border: 1px solid white;
+                    padding: 1px;
+                    text-align: center;
+
+                }
+            }
+        }
+
+    }
+
+    section {
+        background-color: rgb(205, 229, 236);
+
+        .wrapper__section {
+            padding: 10px 0;
+            width: 500px;
+            margin: 0 auto;
+            @include tablet {
+                max-width: 100%;
+                min-width: 310px;
+                padding: 10px 2px;
+            }
+
+            .section__value-type,
+            .section__description,
+            .section__value,
+            .section__save {
+                height: 30px;
+            }
+
+            .section__value-type {
+                @include tablet {
+                    width: 25%;
+                    font-size: .7em;
+                }
+            }
+
+            .section__description {
+                width: 50%;
+                padding-left: 10px;
+                @include tablet {
+                    width: 30%;
+                }
+            }
+
+            .section__value {
+                width: 20%;
+                padding-left: 10px;
+            }
+
+            .section__save {
+                background-color: transparent;
+                border: none;
+                vertical-align: middle;
+                cursor: pointer;
+
+                i {
+                    vertical-align: middle;
+                    color: $incomeColor;
+                    font-size: 2.3em;
+                }
+
+            }
+
+            .section__save:focus {
+                outline: none;
+            }
+
+            .section__save:active {
+                outline: 1px solid gray;
+            }
+        }
+
+    }
+
+    main {
+        .wrapper__main {
+            display: flex;
+            max-width: 800px;
+            margin: 70px auto 0;
+            justify-content: space-around;
+            @include tablet {
+                display: block;
+                max-width: 100%;
+                min-width: 315px;
+                padding: 0 5px;
+            }
+
+            .main__income {
+                flex-basis: 350px;
+                flex-wrap: wrap;
+
+                .income__title {
+                    text-align: left;
+                    padding: 10px 0;
+                    color: $incomeColor;
+                    border-bottom: 1px solid lightsteelblue;
+                }
+
+                .income__entry {
+                    display: flex;
+                    justify-content: space-between;
+                    text-align: left;
+                    padding: 10px 5px 10px 15px;
+                    border-bottom: 1px solid lightsteelblue;
+                    vertical-align: middle;
+
+                    .entry__value-delete {
+                        flex-wrap: nowrap;
+
+
+                        .entry__value {
+                            color: $incomeColor;
+                            font-weight: bold;
+                            padding-right: 5px;
+                        }
+
+                        .entry__delete {
+
+                            background-color: transparent;
+                            border: none;
+                            text-align: center;
+                            vertical-align: middle;
+                            cursor: pointer;
+
+                            i {
+                                vertical-align: middle;
+                                color: $expensesColor;
+                                font-size: 2.3em;
+                            }
+
+                        }
+
+                        .entry__delete:focus {
+                            outline: none;
+                        }
+
+                        .entry__delete:active {
+                            outline: 1px solid gray;
+                        }
+                    }
+                }
+            }
+
+            .main__expenses {
+                flex-basis: 350px;
+                flex-wrap: wrap;
+                @include tablet {
+                    margin-top: 20px ;
+                }
+
+                .expenses__title {
+                    text-align: left;
+                    padding: 10px 0;
+                    color: $expensesColor;
+                    border-bottom: 1px solid lightsteelblue;
+                }
+
+                .expenses__entry {
+                    display: flex;
+                    justify-content: space-between;
+                    text-align: left;
+                    padding: 10px 5px 10px 15px;
+                    border-bottom: 1px solid lightsteelblue;
+                    vertical-align: middle;
+
+                    .entry__value-delete {
+                        flex-wrap: nowrap;
+
+
+                        .entry__value {
+                            color: $expensesColor;
+                            font-weight: bold;
+                            padding-right: 5px;
+                        }
+
+                        .entry__delete {
+
+                            background-color: transparent;
+                            border: none;
+                            text-align: center;
+                            vertical-align: middle;
+                            cursor: pointer;
+
+                            i {
+                                vertical-align: middle;
+                                color: $expensesColor;
+                                font-size: 2.3em;
+                            }
+
+                        }
+
+                        .entry__delete:focus {
+                            outline: none;
+                        }
+
+                        .entry__delete:active {
+                            outline: 1px solid gray;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}

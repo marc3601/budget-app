@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My budget</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="wrapper__header">
+                <div class="header__date">
+                    <p class="date__name">Budżet w Maju 2020</p>
+                </div>
+                <div class="header__total">
+                    <h1 class="total__money">+ 20000</h1>
+                </div>
+                <div class="header__income">
+                    <p class="income__title">Przychody</p>
+                    <p class="income__total">+ 2500</p>
+                </div>
+                <div class="header__expenses">
+                    <p class="expenses__title">Wydatki</p>
+                    <p class="expenses__total">- 500</p>
+                    <div class="expenses__percentage">
+                        <p>12%</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section>
+            <div class="wrapper__section">
+                <select data-type class="section__value-type">
+                    <option value="Income">Przychody</option>
+                    <option value="Expense">Wydatki</option>
+                </select>
+                <input data-description type="text" class="section__description" maxlength="15" placeholder="Opis">
+                <input data-value type="number" class="section__value" maxlength="6" min="0" placeholder="Kwota">
+                <button data-save class="section__save"><i class="large material-icons">add_circle_outline</i></button>
+            </div>
+        </section>
+        <main>
+            <div class="wrapper__main">
+                <div data-parentI class="main__income">
+                    <h3 class="income__title">Przychody</h3>
+                    <!-- <div class="income__entry" data-income>
+                        <span class="entry__name">ooooooooooooooo</span>
+                        <div class="entry__value-delete">
+                            <span class="entry__value">+ 2500</span>
+                            <button class="entry__delete"><i class="large material-icons">cancel</i></button>
+                        </div>
+                    </div> -->
+                </div>
+                <div data-parentE class="main__expenses">
+                    <h3 class="expenses__title">Wydatki</h3>
+                    <div data-expenses class="expenses__entry">
+                        <span class="entry__name">ooooooooooooooo</span>
+                        <div class="entry__value-delete">
+                            <span class="entry__value">- 2500</span>
+                            <button class="entry__delete"><i class="large material-icons">cancel</i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+    <script>
+        const budget = new BudgetCalculator();
+        budget.initializeCalculator();
+    </script>
+    <script id=entry type="text/html">
+        <span class="entry__name"></span>
+        <div class="entry__value-delete">
+            <span class="entry__value">+ 2500</span>
+            <button class="entry__delete"><i class="large material-icons">cancel</i></button>
+        </div>
+    </script>
+</body>
+
+</html>
