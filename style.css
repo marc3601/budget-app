@@ -208,7 +208,7 @@
       flex-wrap: nowrap;
 }
 
-.wrapper main .wrapper__main .main__income .income__entry .entry__value-delete .entry__value {
+.wrapper main .wrapper__main .main__income .income__entry .entry__value-delete .entry__value--income {
   color: green;
   font-weight: bold;
   padding-right: 5px;
@@ -274,7 +274,7 @@
       flex-wrap: nowrap;
 }
 
-.wrapper main .wrapper__main .main__expenses .expenses__entry .entry__value-delete .entry__value {
+.wrapper main .wrapper__main .main__expenses .expenses__entry .entry__value-delete .entry__value--expense {
   color: #ff3333;
   font-weight: bold;
   padding-right: 5px;

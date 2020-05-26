@@ -18,17 +18,17 @@
                     <p class="date__name">Budżet w Maju 2020</p>
                 </div>
                 <div class="header__total">
-                    <h1 class="total__money">+ 20000</h1>
+                    <h1 data-master class="total__money">0</h1>
                 </div>
                 <div class="header__income">
                     <p class="income__title">Przychody</p>
-                    <p class="income__total">+ 2500</p>
+                    <p data-showIncome class="income__total">+ 0</p>
                 </div>
                 <div class="header__expenses">
                     <p class="expenses__title">Wydatki</p>
-                    <p class="expenses__total">- 500</p>
+                    <p data-ShowExpense class="expenses__total">- 0</p>
                     <div class="expenses__percentage">
-                        <p>12%</p>
+                        <p data-percent>0%</p>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                     <option value="Expense">Wydatki</option>
                 </select>
                 <input data-description type="text" class="section__description" maxlength="15" placeholder="Opis">
-                <input data-value type="number" class="section__value" maxlength="6" min="0" placeholder="Kwota">
+                <input data-value type="number" class="section__value" max="10000" min="0" placeholder="Kwota">
                 <button data-save class="section__save"><i class="large material-icons">add_circle_outline</i></button>
             </div>
         </section>
@@ -50,7 +50,7 @@
                     <h3 class="income__title">Przychody</h3>
                     <!-- <div class="income__entry" data-income>
                         <span class="entry__name">ooooooooooooooo</span>
-                        <div class="entry__value-delete">
+                        <div id="delete" class="entry__value-delete">
                             <span class="entry__value">+ 2500</span>
                             <button class="entry__delete"><i class="large material-icons">cancel</i></button>
                         </div>
@@ -58,13 +58,13 @@
                 </div>
                 <div data-parentE class="main__expenses">
                     <h3 class="expenses__title">Wydatki</h3>
-                    <div data-expenses class="expenses__entry">
+                    <!-- <div data-expenses class="expenses__entry">
                         <span class="entry__name">ooooooooooooooo</span>
-                        <div class="entry__value-delete">
+                        <div id="delete" class="entry__value-delete">
                             <span class="entry__value">- 2500</span>
                             <button class="entry__delete"><i class="large material-icons">cancel</i></button>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </main>
@@ -74,12 +74,17 @@
         const budget = new BudgetCalculator();
         budget.initializeCalculator();
     </script>
-    <script id=entry type="text/html">
+    <script id=income type="text/html">
         <span class="entry__name"></span>
         <div class="entry__value-delete">
-            <span class="entry__value">+ 2500</span>
-            <button class="entry__delete"><i class="large material-icons">cancel</i></button>
-        </div>
+            <span class="entry__value--income"></span>
+            <button id="delete" class="entry__delete"><i class="large material-icons">cancel</i></button>
+    </script>
+    <script id=expense type="text/html">
+        <span class="entry__name"></span>
+        <div class="entry__value-delete">
+            <span class="entry__value--expense"></span>
+            <button id="delete" class="entry__delete"><i class="large material-icons">cancel</i></button>
     </script>
 </body>
 

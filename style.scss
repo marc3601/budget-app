@@ -188,7 +188,7 @@ $expensesColor:lighten($color: red, $amount: 10);
                         flex-wrap: nowrap;
 
 
-                        .entry__value {
+                        .entry__value--income {
                             color: $incomeColor;
                             font-weight: bold;
                             padding-right: 5px;
@@ -247,7 +247,7 @@ $expensesColor:lighten($color: red, $amount: 10);
                         flex-wrap: nowrap;
 
 
-                        .entry__value {
+                        .entry__value--expense {
                             color: $expensesColor;
                             font-weight: bold;
                             padding-right: 5px;
