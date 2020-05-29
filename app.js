@@ -41,14 +41,14 @@ class BudgetCalculator {
             if (this.description.value !== "" && this.amount.value !== "" && this.amount.value < 10001) {
 
                 if (this.type.value === "Expense") {
-                    this.createNewExpenseEntry()
+                    this.createNewEntry('expense', ".expenses__entry", ".main__expenses", 'data-expenses', ".entry__value--expense", "- ", this.TotalExpense, )
                     this.deleteEntry = document.querySelectorAll(".entry__delete");
                     this.totalValue(this.TotalExpense, this.ExpenseDisplay)
                     this.totalBudget()
                     if (this.IncomeDisplay !== "" && this.ExpenseDisplay !== "") return this.calculatePercent(this.IncomeDisplay, this.ExpenseDisplay)
 
                 } else {
-                    this.createNewIncomeEntry()
+                    this.createNewEntry('income', ".income__entry", ".main__income", 'data-income', ".entry__value--income", "+ ", this.TotalIncome, )
                     this.deleteEntry = document.querySelectorAll(".entry__delete");
                     this.totalValue(this.TotalIncome, this.IncomeDisplay)
                     this.totalBudget()
@@ -56,8 +56,6 @@ class BudgetCalculator {
                 }
 
             }
-
-
 
         }
         window.addEventListener('click', e => {
@@ -67,15 +65,14 @@ class BudgetCalculator {
                 const c = b.parentNode;
                 const test = a.previousSibling.previousSibling.innerHTML.substring(2)
                 const symbol = a.previousSibling.previousSibling.innerHTML.substring(0, 1)
-        
+
                 if (symbol === "+") {
                     this.IncomeDisplay = this.IncomeDisplay - test
-
                     this.TotalIncome = this.TotalIncome.filter(x => {
                         return x !== test
                     })
                     this.totalBudget();
-                    this.showIncome.innerHTML = "+ " + this.IncomeDisplay
+                    this.showIncome.innerHTML = "+ " + this.IncomeDisplay % 1 > 0 ? this.IncomeDisplay.toFixed(2) : this.IncomeDisplay.toFixed()
                     c.remove()
                     if (this.IncomeDisplay !== 0 || this.ExpenseDisplay !== 0) return this.calculatePercent(this.IncomeDisplay, this.ExpenseDisplay)
                     return this.showPercent.innerHTML = "0%"
@@ -85,7 +82,7 @@ class BudgetCalculator {
                         return x !== test
                     })
                     this.totalBudget();
-                    this.showExpense.innerHTML = "- " + this.ExpenseDisplay
+                    this.showExpense.innerHTML = "- " + this.ExpenseDisplay % 1 > 0 ? this.ExpenseDisplay.toFixed(2) : this.ExpenseDisplay.toFixed()
                     c.remove()
                     if (this.IncomeDisplay !== 0 || this.ExpenseDisplay !== 0) return this.calculatePercent(this.IncomeDisplay, this.ExpenseDisplay)
                     return this.showPercent.innerHTML = "0%"
@@ -102,41 +99,21 @@ class BudgetCalculator {
 
     }
 
-
-    createNewIncomeEntry() {
-        const entry = document.getElementById('income').innerHTML
+    createNewEntry(clas1, clas2, clas3, clas4, clas5, symbol, type) {
+        const entry = document.getElementById(clas1).innerHTML
         let sp1 = document.createElement("div")
-        let sp2 = document.querySelector(".income__entry")
-        let parentDiv = document.querySelector(".main__income")
-        sp1.classList.add("income__entry")
-        sp1.setAttribute('data-income', "")
+        let sp2 = document.querySelector(clas2)
+        let parentDiv = document.querySelector(clas3)
+        sp1.classList.add(clas2.substring(1))
+        sp1.setAttribute(clas4, "")
         sp1.innerHTML = entry
         sp1.firstElementChild.innerHTML = this.description.value
         parentDiv.insertBefore(sp1, sp2)
-        let sp3 = document.querySelector(".entry__value--income")
-        sp3.innerHTML = "+ " + this.amount.value
-        this.TotalIncome.push(this.amount.value)
+        let sp3 = document.querySelector(clas5)
+        sp3.innerHTML = symbol + this.amount.value
+        type.push(this.amount.value)
         this.amount.value = "";
         this.description.value = ""
-
-    }
-
-    createNewExpenseEntry() {
-        const entry = document.getElementById('expense').innerHTML
-        let sp1 = document.createElement("div")
-        let sp2 = document.querySelector(".expenses__entry")
-        let parentDiv = document.querySelector(".main__expenses")
-        sp1.classList.add("expenses__entry")
-        sp1.setAttribute('data-expenses', "")
-        sp1.innerHTML = entry
-        sp1.firstElementChild.innerHTML = this.description.value
-        parentDiv.insertBefore(sp1, sp2)
-        let sp3 = document.querySelector(".entry__value--expense")
-        sp3.innerHTML = "- " + this.amount.value
-        this.TotalExpense.push(this.amount.value)
-        this.amount.value = "";
-        this.description.value = ""
-
     }
 
     totalValue(value, display) {
@@ -144,10 +121,10 @@ class BudgetCalculator {
             display = value[0];
             if (this.type.value === "Expense") {
                 this.ExpenseDisplay = display
-                this.showExpense.innerHTML = "- " + this.ExpenseDisplay
+                this.ExpenseDisplay > 0 ? this.showExpense.innerHTML = "- " + this.ExpenseDisplay : this.showExpense.innerHTML = this.ExpenseDisplay;
             } else {
                 this.IncomeDisplay = display
-                this.showIncome.innerHTML = "+ " + this.IncomeDisplay
+                this.IncomeDisplay > 0 ? this.showIncome.innerHTML = "+ " + this.IncomeDisplay : this.showIncome.innerHTML = this.IncomeDisplay;
             }
 
         } else {
@@ -159,13 +136,12 @@ class BudgetCalculator {
             });
             display.toFixed(2) % 1 > 0 ? display = display.toFixed(2) : display = display
 
-
             if (this.type.value === "Expense") {
                 this.ExpenseDisplay = display
-                this.showExpense.innerHTML = "- " + this.ExpenseDisplay
+                this.ExpenseDisplay > 0 ? this.showExpense.innerHTML = "- " + this.ExpenseDisplay : this.showExpense.innerHTML = this.ExpenseDisplay;
             } else {
                 this.IncomeDisplay = display
-                this.showIncome.innerHTML = "+ " + this.IncomeDisplay
+                this.IncomeDisplay > 0 ? this.showIncome.innerHTML = "+ " + this.IncomeDisplay : this.showIncome.innerHTML = this.IncomeDisplay;
             }
         }
     }
@@ -177,6 +153,11 @@ class BudgetCalculator {
     }
 
     calculatePercent(income, expanse) {
+        expanse < 0 ? expanse = 0 : null;
+        if (income === 0 && expanse === 0) {
+            income = 0;
+            expanse = 0
+        }
         this.percentage = (expanse / income) * 100
         if (this.percentage > 0) return this.showPercent.innerHTML = this.percentage.toFixed(2) + "%"
 
