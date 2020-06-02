@@ -41,6 +41,8 @@ class BudgetCalculator {
             if (this.description.value !== "" && this.amount.value !== "" && this.amount.value < 10001) {
 
                 if (this.type.value === "Expense") {
+                    if (this.amount.value.charAt(0) === "+") this.amount.value = this.amount.value.replace("+", '')
+                    if (this.amount.value.charAt(0) === "-") this.amount.value = this.amount.value.replace("-", '')
                     this.createNewEntry('expense', ".expenses__entry", ".main__expenses", 'data-expenses', ".entry__value--expense", "- ", this.TotalExpense, )
                     this.deleteEntry = document.querySelectorAll(".entry__delete");
                     this.totalValue(this.TotalExpense, this.ExpenseDisplay)
@@ -48,6 +50,8 @@ class BudgetCalculator {
                     if (this.IncomeDisplay !== "" && this.ExpenseDisplay !== "") return this.calculatePercent(this.IncomeDisplay, this.ExpenseDisplay)
 
                 } else {
+                    if (this.amount.value.charAt(0) === "+") this.amount.value = this.amount.value.replace("+", '')
+                    if (this.amount.value.charAt(0) === "-") this.amount.value = this.amount.value.replace("-", '')
                     this.createNewEntry('income', ".income__entry", ".main__income", 'data-income', ".entry__value--income", "+ ", this.TotalIncome, )
                     this.deleteEntry = document.querySelectorAll(".entry__delete");
                     this.totalValue(this.TotalIncome, this.IncomeDisplay)
@@ -117,8 +121,7 @@ class BudgetCalculator {
     }
 
     totalValue(value, display) {
-        if (value.length === 1) {
-            display = value[0];
+        const chooseSymbol = () => {
             if (this.type.value === "Expense") {
                 this.ExpenseDisplay = display
                 this.ExpenseDisplay > 0 ? this.showExpense.innerHTML = "- " + this.ExpenseDisplay : this.showExpense.innerHTML = this.ExpenseDisplay;
@@ -126,6 +129,11 @@ class BudgetCalculator {
                 this.IncomeDisplay = display
                 this.IncomeDisplay > 0 ? this.showIncome.innerHTML = "+ " + this.IncomeDisplay : this.showIncome.innerHTML = this.IncomeDisplay;
             }
+        }
+
+        if (value.length === 1) {
+            display = value[0];
+            chooseSymbol()
 
         } else {
             var result = value.map(x => {
@@ -136,13 +144,7 @@ class BudgetCalculator {
             });
             display.toFixed(2) % 1 > 0 ? display = display.toFixed(2) : display = display
 
-            if (this.type.value === "Expense") {
-                this.ExpenseDisplay = display
-                this.ExpenseDisplay > 0 ? this.showExpense.innerHTML = "- " + this.ExpenseDisplay : this.showExpense.innerHTML = this.ExpenseDisplay;
-            } else {
-                this.IncomeDisplay = display
-                this.IncomeDisplay > 0 ? this.showIncome.innerHTML = "+ " + this.IncomeDisplay : this.showIncome.innerHTML = this.IncomeDisplay;
-            }
+            chooseSymbol()
         }
     }
 

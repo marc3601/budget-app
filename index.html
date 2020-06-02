@@ -40,7 +40,7 @@
                     <option value="Expense">Wydatki</option>
                 </select>
                 <input data-description type="text" class="section__description" maxlength="15" placeholder="Opis">
-                <input data-value type="number" class="section__value" max="10000" min="0" placeholder="Kwota">
+                <input data-value type="number" pattern="[0-9]" class="section__value" max="10000" min="0" placeholder="Kwota">
                 <button data-save class="section__save"><i class="large material-icons">add_circle_outline</i></button>
             </div>
         </section>
