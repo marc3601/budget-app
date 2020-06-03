@@ -16,7 +16,8 @@ class BudgetCalculator {
             displayInncome: '[data-showIncome]',
             displayExpense: '[data-ShowExpense]',
             masterDisplay: '[data-master]',
-            percentDisplay: '[data-percent]'
+            percentDisplay: '[data-percent]',
+            monthDisplay: '[data-month]'
         }
     }
 
@@ -30,14 +31,16 @@ class BudgetCalculator {
         this.showExpense = document.querySelector(this.Selectors.displayExpense);
         this.mainScreen = document.querySelector(this.Selectors.masterDisplay);
         this.showPercent = document.querySelector(this.Selectors.percentDisplay);
+        this.showDate = document.querySelector(this.Selectors.monthDisplay);
 
         this.addEventListeners();
+        this.showMonth()
     }
 
     addEventListeners() {
 
         const mainDriver = () => {
-
+            
             if (this.description.value !== "" && this.amount.value !== "" && this.amount.value < 10001) {
 
                 if (this.type.value === "Expense") {
@@ -162,7 +165,12 @@ class BudgetCalculator {
         }
         this.percentage = (expanse / income) * 100
         if (this.percentage > 0) return this.showPercent.innerHTML = this.percentage.toFixed(2) + "%"
+    }
 
+    showMonth() {
+        const months = ['Styczniu','Lutym','Marcu','Kwietniu','Maju','Czerwcu','Lipcu','Sierpniu','Wrześniu','Październiku','Listopadzie','Grudniu']
+        const date = new Date().getMonth()     
+        this.showDate.innerHTML = months[date]
     }
 
 }
